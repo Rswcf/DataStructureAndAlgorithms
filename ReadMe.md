@@ -39,7 +39,7 @@
 
 ### 3.1.3 代码
 
-[二维数组与稀疏数组相互转化](com/yijie/sparsearray/SparseArray.java)
+[二维数组与稀疏数组相互转化](src/com/yijie/sparsearray/SparseArray.java)
 
 ## 3.2队列
 
@@ -55,6 +55,6 @@
     1. 将尾指针后移，`rear+1`,当`front=rear`,空
     2. 若尾指针`rear`小于队列最大下标`maxSize-1`，则将数据存入`raer`所指的数据元素中，否则无法存入数据。`rear == maxSize-1`，队列满。
 
-![Example of queue](image/Queue.png "Queue")
+![Example of queue](src/image/Queue.png "Queue")
 
 
