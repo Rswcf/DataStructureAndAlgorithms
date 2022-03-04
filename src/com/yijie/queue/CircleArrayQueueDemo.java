@@ -2,13 +2,12 @@ package com.yijie.queue;
 
 import java.util.Scanner;
 
-public class ArrayQueueDemo {
-
+public class CircleArrayQueueDemo {
     public static void main(String[] args) {
 
         //test
-        //create a queue
-        ArrayQueue queue = new ArrayQueue(4);
+        //create a circle queue
+        CircleArray queue = new CircleArray(4);
         char key = ' ';//receive the user input
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
@@ -55,27 +54,33 @@ public class ArrayQueueDemo {
         }
         System.out.println("Program ends!");
     }
+
+
 }
 
-//use array to build a queue: ArrayQueue
-class ArrayQueue {
+class CircleArray {
     private int maxSize;// maximum size of the queue
-    private int front;//the front of the queue
-    private int rear;//the rear of the queue
+
+    //front points to the first item of the queue, i.e. arr[front] is the head of the queue
+    //initialize front = 0
+    private int front;
+
+    //rear points to the next position of the last item in the queue
+    //initialize rear = 0
+    private int rear;
+
     private int[] arr;//used to store the values
 
-    //create the constructor of the queue
-    public ArrayQueue(int arrMaxSize) {
+    public CircleArray(int arrMaxSize) {
         maxSize = arrMaxSize;
         arr = new int[maxSize];
-        front = -1;//point to the head of the queue,i.e. to the previous position at the head of the queue
-        rear = -1;//point directly to the rear of the queue, i.e. to the last position of the queue
+        front = 0;
+        rear = 0;
     }
 
     //determine if the queue is full
     public boolean isFull() {
-        return rear == maxSize - 1;
-
+        return (rear + 1) % maxSize == front;
     }
 
     //determine if the queue is empty
@@ -90,8 +95,8 @@ class ArrayQueue {
             System.out.println("Queue is full!");
             return;
         }
-        rear++;
         arr[rear] = n;
+        rear = (rear + 1) % maxSize;
     }
 
     //get the item of the queue
@@ -100,8 +105,12 @@ class ArrayQueue {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty, can't get the data!");
         }
-        front++;//move the front to the next position
-        return arr[front];
+        //1. assign the value of front to a temporary variable
+        //2. move the front to the next position, considering %
+        //3. return the temporary variable
+        int value = arr[front];
+        front = (front + 1) % maxSize;
+        return value;
     }
 
     //display all the values of the queue
@@ -111,9 +120,15 @@ class ArrayQueue {
             System.out.println("Empty!");
             return;
         }
-        for (int i = 0; i < arr.length; i++) {
-            System.out.printf("arr[%d]=%d\n", i, arr[i]);
+
+        for (int i = front; i < front + size(); i++) {
+            System.out.printf("arr[%d]=%d\n", i % maxSize, arr[i % maxSize]);
         }
+    }
+
+    //figure out the effective number of the items in the queue
+    public int size() {
+        return (rear + maxSize - front) % maxSize;
     }
 
     // display the items at the head of the queue, not get
@@ -121,7 +136,6 @@ class ArrayQueue {
         if (isEmpty()) {
             throw new RuntimeException("Empty!");
         }
-        return arr[front + 1];
+        return arr[front];
     }
-
 }
