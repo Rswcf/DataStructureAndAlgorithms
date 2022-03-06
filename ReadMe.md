@@ -57,6 +57,9 @@
 
 ![Example of queue](src/image/Queue.png "Queue")
 
+####代码
+[数组模拟队列](src/com/yijie/sparsearray/ArrayQueueDemo.java)
+
 #### 数组模拟环形队列
 1. 目前的数组只可使用一次，没有达到复用的效果
 2. 将这个数组使用算法，改进成一个**环形的队列**，取模: %
@@ -66,6 +69,8 @@
 3. 当队列满时，条件为:`(rear+1)%maxSize=front`
 4. 当队列为空的条件:`rear = front`
 5. 队列中有效数据的个数`(rear+maxSize-front)%maxSize`
+####代码
+[数组模拟环形队列](src/com/yijie/sparsearray/CircleArrayQueueDemo.java)
 
 # 4. 链表
 ## 4.1 单链表
@@ -73,3 +78,8 @@
 ### 4.1.2 单链表的创建
 1. 先创建一个`head`头节点，作用为表示链表的头
 2. 依次添加后续节点到链表最后遍历
+
+* 添加元素到链表指定位置
+  * 通过**遍历**以及**辅助变量**`temp`找到新添加节点的位置
+  * `新节点.next = temp.next`
+  * `temp.next = 新节点`

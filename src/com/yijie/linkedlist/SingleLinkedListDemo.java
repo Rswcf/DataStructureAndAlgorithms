@@ -8,12 +8,23 @@ public class SingleLinkedListDemo {
         HeroNode hero4 = new HeroNode(4, "ironman", "iron");
 
         //add to Linkedlist
+
         SingleLinkedList singleLinkedList = new SingleLinkedList();
 
-        singleLinkedList.add(hero1);
-        singleLinkedList.add(hero2);
-        singleLinkedList.add(hero3);
-        singleLinkedList.add(hero4);
+        //singleLinkedList.add(hero1);
+        //singleLinkedList.add(hero4);
+        //singleLinkedList.add(hero2);
+        //singleLinkedList.add(hero3);
+
+        singleLinkedList.addByOrder(hero1);
+        singleLinkedList.addByOrder(hero4);
+        singleLinkedList.addByOrder(hero2);
+        singleLinkedList.addByOrder(hero3);
+
+        //test the update
+        HeroNode hero5 = new HeroNode(3, "dogman", "dog");
+        singleLinkedList.update(hero5);
+
 
         singleLinkedList.list();
 
@@ -41,7 +52,6 @@ class SingleLinkedList {
             temp = temp.next;
         }
         temp.next = heroNode;
-
     }
 
     public void list() {
@@ -53,7 +63,7 @@ class SingleLinkedList {
         //build an auxiliary variable
         HeroNode temp = head.next;
         while (true) {
-            if (temp.next == null) {
+            if (temp == null) {
                 break;
             }
             //output the info of the node
@@ -61,6 +71,65 @@ class SingleLinkedList {
             temp = temp.next;
 
         }
+    }
+
+    public void addByOrder(HeroNode heroNode) {
+        //because the head is fixed, we need an auxiliary variable/pointer to help find the position
+        //due to singleLinkedList, the temp should be located at the previous position of the being added item
+        HeroNode temp = head;
+        boolean flag = false;//indicates whether the to be added item already exists, default = false
+        while (true) {
+            if (temp.next == null) {
+                //the auxiliary variable is located now at the rear of the singleLinkedList
+                break;
+            }
+            if (temp.next.no > heroNode.no) {
+                break;
+            } else if (temp.next.no == heroNode.no) {
+                flag = true;//indicates that the item already exists
+                break;
+            }
+            temp = temp.next;//move to the next position, traverse
+        }
+
+        //according to the value of the flag
+        if (flag) {
+            System.out.printf("the new item can`t be added because the node number %d already exists", heroNode.no);
+        } else {
+            heroNode.next = temp.next;
+            temp.next = heroNode;
+
+        }
+
+    }
+    //update the data of the node, keep the no of the node unchanged
+    public void update(HeroNode newHeroNode){
+        //determine if null
+        if(head.next == null){
+            System.out.println("the Linkedlist is null!");
+            return;
+        }
+        HeroNode temp = head.next;
+        boolean flag = false;//indicates whether the node is found
+        while (true){
+            if (temp.next == null){
+                //at the rear of the Linkedlist
+                break;
+            }
+            if (temp.no == newHeroNode.no){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag){
+            temp.name = newHeroNode.name;
+            temp.nickname = newHeroNode.nickname;
+        } else{
+            System.out.printf("no node found, node %d can't be updated!", newHeroNode.no);
+        }
+
+
     }
 }
 
