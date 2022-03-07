@@ -27,6 +27,12 @@ public class SingleLinkedListDemo {
 
 
         singleLinkedList.list();
+        System.out.println();
+
+        //test the delete()
+        singleLinkedList.del(2);
+        System.out.println("the SingleLinkedList after deletion is: \n");
+        singleLinkedList.list();
 
 
     }
@@ -128,8 +134,29 @@ class SingleLinkedList {
         } else{
             System.out.printf("no node found, node %d can't be updated!", newHeroNode.no);
         }
+    }
 
-
+    //delete the node
+    //1. keep the head node, use the auxiliary node to find the previous node of the to be deleted node
+    //2. compare the temp.next.no and the no of the to be deleted node
+    public void del(int no) {
+        HeroNode temp = head;
+        boolean flag = false;//indicated whether the node is found
+        while (true) {
+            if (temp.next == null){//rear of the linkedlist
+                break;
+            }
+            if (temp.next.no == no){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag){
+            temp.next = temp.next.next;
+        }else{
+            System.out.printf("the node %no doesn't exist!", no);
+        }
     }
 }
 

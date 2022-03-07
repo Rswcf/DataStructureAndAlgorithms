@@ -58,7 +58,7 @@
 ![Example of queue](src/image/Queue.png "Queue")
 
 ####代码
-[数组模拟队列](src/com/yijie/sparsearray/ArrayQueueDemo.java)
+[数组模拟队列](src/com/yijie/queue/ArrayQueueDemo.java)
 
 #### 数组模拟环形队列
 1. 目前的数组只可使用一次，没有达到复用的效果
@@ -70,16 +70,31 @@
 4. 当队列为空的条件:`rear = front`
 5. 队列中有效数据的个数`(rear+maxSize-front)%maxSize`
 ####代码
-[数组模拟环形队列](src/com/yijie/sparsearray/CircleArrayQueueDemo.java)
+[数组模拟环形队列](src/com/yijie/queue/CircleArrayQueueDemo.java)
 
 # 4. 链表
 ## 4.1 单链表
-### 4.1.1
+### 4.1.1 基本介绍
+链表是有序的列表，在内存中存储方式如下:
+![Example of SingleLinkedList](src/image/SingleLinkedList.png "SingleLinkedList")
+* 链表是以节点的方式来存储，是链式存储
+* 每个节点包含data域，next域:指向下一个节点
+* 链表的各个节点不一定是连续存储
+* 链表分带头节点的链表和不带头节点的链表
+
 ### 4.1.2 单链表的创建
 1. 先创建一个`head`头节点，作用为表示链表的头
 2. 依次添加后续节点到链表最后遍历
-
-* 添加元素到链表指定位置
-  * 通过**遍历**以及**辅助变量**`temp`找到新添加节点的位置
-  * `新节点.next = temp.next`
-  * `temp.next = 新节点`
+### 4.1.3 添加元素到链表指定位置
+1. 通过**遍历**以及**辅助变量**`temp`找到新添加节点的位置
+2. `新节点.next = temp.next`
+3. `temp.next = 新节点`
+### 4.1.4 修改链表中节点
+1. 通过遍历找到该节点
+2. 修改节点信息
+### 4.1.5 从单链表中删除一个节点
+1. 找到需要删除的节点的前一个节点`temp`
+2. `temp.next = temp.next.next`
+3. 被删除的节点，将不会有其他引用指向，会被垃圾回收机制回收
+### 4.1.6 代码
+[单链表](src/com/yijie/linkedlist/SingleLinkedListDemo.java)
