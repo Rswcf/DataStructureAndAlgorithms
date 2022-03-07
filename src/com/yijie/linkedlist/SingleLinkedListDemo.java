@@ -34,14 +34,70 @@ public class SingleLinkedListDemo {
         System.out.println("the SingleLinkedList after deletion is: \n");
         singleLinkedList.list();
 
+        //test the getLength()
+        System.out.println("the length of the singleLinkedList: " + getLength(singleLinkedList.getHead()));
 
+        //test the findLastIndexNode()
+        HeroNode res = findLastIndexNode(singleLinkedList.getHead(), 1);
+        System.out.println(res);
     }
+
+    //Question: get the number of the nodes in the linked list (if head node exists, don't count)
+    /*
+    @param head=>head of the linkedlist
+    @return=>number of the nodes
+     */
+    public static int getLength(HeroNode head) {
+        if (head.next == null) {
+            return 0;
+        }
+        int length = 0;
+        //define a auxiliary variable
+        HeroNode cur = head.next;
+
+        while (cur != null) {
+            length++;
+            cur = cur.next;//traverse
+        }
+        return length;
+    }
+
+    //Question:  get the k-th node from the last of a linked list
+    /*
+    1.create a method to receive the head and the index simultaneously
+    2.index indicates the index-th node from the last of the linked list
+    3.traverse the linked list and get the length
+    4.after getting the size, traverse (size - index) items
+     */
+    public static HeroNode findLastIndexNode(HeroNode head, int index) {
+        //if empty return null
+        if (head.next == null) {
+            return null;
+        }
+        //first traverse, get the length of the linked list
+        int size = getLength(head);
+        //second traverse, to the position of (size - index), i.e. the index-th item from teh last
+        if (index <= 0 || index > size) {
+            return null;
+        }
+        //create a auxiliary variable
+        HeroNode cur = head.next;
+        for (int i = 0; i < size - index; i++) {
+            cur = cur.next;
+        }
+        return cur;
+    }
+
 }
 
 //Define a SingleLinkedList to manage the heros
 class SingleLinkedList {
     //initialize the head node
     private HeroNode head = new HeroNode(0, "", "");
+
+    public HeroNode getHead() {
+        return head;
+    }
 
     //add Node
     //1. find the last node of the linkedlist
@@ -108,30 +164,31 @@ class SingleLinkedList {
         }
 
     }
+
     //update the data of the node, keep the no of the node unchanged
-    public void update(HeroNode newHeroNode){
+    public void update(HeroNode newHeroNode) {
         //determine if null
-        if(head.next == null){
+        if (head.next == null) {
             System.out.println("the Linkedlist is null!");
             return;
         }
         HeroNode temp = head.next;
         boolean flag = false;//indicates whether the node is found
-        while (true){
-            if (temp.next == null){
+        while (true) {
+            if (temp.next == null) {
                 //at the rear of the Linkedlist
                 break;
             }
-            if (temp.no == newHeroNode.no){
+            if (temp.no == newHeroNode.no) {
                 flag = true;
                 break;
             }
             temp = temp.next;
         }
-        if (flag){
+        if (flag) {
             temp.name = newHeroNode.name;
             temp.nickname = newHeroNode.nickname;
-        } else{
+        } else {
             System.out.printf("no node found, node %d can't be updated!", newHeroNode.no);
         }
     }
@@ -143,18 +200,18 @@ class SingleLinkedList {
         HeroNode temp = head;
         boolean flag = false;//indicated whether the node is found
         while (true) {
-            if (temp.next == null){//rear of the linkedlist
+            if (temp.next == null) {//rear of the linkedlist
                 break;
             }
-            if (temp.next.no == no){
+            if (temp.next.no == no) {
                 flag = true;
                 break;
             }
             temp = temp.next;
         }
-        if (flag){
+        if (flag) {
             temp.next = temp.next.next;
-        }else{
+        } else {
             System.out.printf("the node %no doesn't exist!", no);
         }
     }
