@@ -98,3 +98,22 @@
 3. 被删除的节点，将不会有其他引用指向，会被垃圾回收机制回收
 ### 4.1.6 代码
 [单链表](src/com/yijie/linkedlist/SingleLinkedListDemo.java)
+## 4.2双向链表
+### 4.2.1 基本介绍
+单链表缺点分析:
+1. 单链表只能从一个方向进行查找，双向链表可以前向或者后向进行查找
+2. 单项链表不能自我删除，需要依靠辅助节点，双向可以**自我删除**
+### 4.2.2 双向链表的创建及增删改查操作
+1. 遍历方法与单链表一直，区别:可以前向，也可后向查找
+2. **添加**:默认添加到双向链表最后
+   1. 找到双向链表的最后节点
+   2. `temp.next = newHeroNode`
+   3. `newHeroNode.pre = temp`
+3. **修改**的思路及原理与单向链表一致
+4. **删除**:
+   1. 双向链表可实现自我删除
+   2. 直接定位到待删除节点`temp`
+   3. `temp.pre.next = temp.next`
+   4. `temp.next.pre = temp.pre`
+### 4.2.3 代码
+[双向链表](src/com/yijie/linkedlist/DoubleLinkedListDemo.java)

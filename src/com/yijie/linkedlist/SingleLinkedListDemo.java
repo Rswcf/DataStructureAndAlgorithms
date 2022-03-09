@@ -1,5 +1,7 @@
 package com.yijie.linkedlist;
 
+import java.util.Stack;
+
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
         HeroNode hero1 = new HeroNode(1, "superman", "sup");
@@ -22,7 +24,7 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(hero3);
 
         //test the update
-        HeroNode hero5 = new HeroNode(3, "dogman", "dog");
+        HeroNode hero5 = new HeroNode(4, "dogman", "dog");
         singleLinkedList.update(hero5);
 
 
@@ -30,16 +32,23 @@ public class SingleLinkedListDemo {
         System.out.println();
 
         //test the delete()
-        singleLinkedList.del(2);
-        System.out.println("the SingleLinkedList after deletion is: \n");
-        singleLinkedList.list();
+//        singleLinkedList.del(2);
+//        System.out.println("the SingleLinkedList after deletion is: \n");
+//        singleLinkedList.list();
 
         //test the getLength()
-        System.out.println("the length of the singleLinkedList: " + getLength(singleLinkedList.getHead()));
+//        System.out.println("the length of the singleLinkedList: " + getLength(singleLinkedList.getHead()));
 
         //test the findLastIndexNode()
-        HeroNode res = findLastIndexNode(singleLinkedList.getHead(), 1);
-        System.out.println(res);
+//        HeroNode res = findLastIndexNode(singleLinkedList.getHead(), 1);
+//        System.out.println(res);
+
+        //test the reverseList()
+//        reverseList(singleLinkedList.getHead());
+//        singleLinkedList.list();
+
+        //test the reversePrint()
+//        reversePrint(singleLinkedList.getHead());
     }
 
     //Question: get the number of the nodes in the linked list (if head node exists, don't count)
@@ -88,6 +97,48 @@ public class SingleLinkedListDemo {
         return cur;
     }
 
+    //Question: Reverse the linked list
+    public static void reverseList(HeroNode head){
+        //if the linked list is empty, or just has one node, return
+        if (head.next == null || head.next.next == null){
+            return;
+        }
+        //define an auxiliary variable to traverse the original linked list
+        HeroNode cur = head.next;
+        HeroNode next = null;//points to the next node of the current node
+        HeroNode reverseHead = new HeroNode(0,"","");
+
+        //traverse the original linked list, get the traversed node and put it in the front of the new linked list
+        while (cur != null){
+            next = cur.next;
+            cur.next = reverseHead.next;
+            reverseHead.next = cur;
+            cur = next;
+        }
+        //make head.next point to the reverseHead.next,
+        head.next = reverseHead.next;
+    }
+
+    //QUESTION: print the linked list in reversed order
+    /*
+    solution 1: reverse the linked list and traverse => destroy the structure of the original linked list
+    solution 2: use a stack
+    */
+    public static void reversePrint(HeroNode head){
+        if(head.next == null){
+            return;
+        }
+        //create a Stack
+        Stack<HeroNode> stack = new Stack<HeroNode>();
+        HeroNode cur = head.next;
+        while (cur != null){
+            stack.push(cur);
+            cur = cur.next;
+        }
+        while (stack.size() > 0){
+            System.out.println(stack.pop());
+        }
+    }
 }
 
 //Define a SingleLinkedList to manage the heros
@@ -175,7 +226,7 @@ class SingleLinkedList {
         HeroNode temp = head.next;
         boolean flag = false;//indicates whether the node is found
         while (true) {
-            if (temp.next == null) {
+            if (temp == null) {
                 //at the rear of the Linkedlist
                 break;
             }
@@ -235,6 +286,6 @@ class HeroNode {
     //for display purpose, redefine the toString method
     @Override
     public String toString() {
-        return "HeroNode [no= " + no + ", name= " + name + ", nickname= " + this.nickname + "]";
+        return "HeroNode [no= " + no + ", name= " + name + ", nickname= " + nickname + "]";
     }
 }

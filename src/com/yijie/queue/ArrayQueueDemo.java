@@ -85,7 +85,7 @@ class ArrayQueue {
 
     //add the item to the queue
     public void addQueue(int n) {
-        //determin if full
+        //determine if full
         if (isFull()) {
             System.out.println("Queue is full!");
             return;
