@@ -117,3 +117,24 @@
    4. `temp.next.pre = temp.pre`
 ### 4.2.3 代码
 [双向链表](src/com/yijie/linkedlist/DoubleLinkedListDemo.java)
+## 4.3 单向环形链表
+### 4.3.1 单向环形链表的应用: Josephus Problem
+Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=n)的人从1开始报数，数到m的人出列，m的下一位继续从0开始报数。依次类推，直到所有人出列为止，由此产生一个出列编号的序列。
+
+![Josephus Problem](src/image/JosephusProblem.png "Josephus Problem")
+
+*示例:
+  * n=5,共有5人
+  * k=1,从第一人开始报数
+  * m=2,数两次
+  * 出队列顺序:
+    * 2=>4=>1=>5=>3
+### 4.3.2 单向环形链表的创建及操作
+1. **创建**一个单向环形链表
+   1. 创建第一个节点，让first指针指向该节点，并形成环形
+   2. 之后每创建一个新节点，就把该节点加入到已有的环形链表即可
+2. **遍历**单向环形链表
+   1. 先让一个辅助指针指向first节点
+   2. 后通过一个while循环遍历该链表即可(`cur.next first`)
+### 4.3.3 代码
+[单向环形链表及Josephu Problem](src/com/yijie/linkedlist/JosephuProblem.java)
