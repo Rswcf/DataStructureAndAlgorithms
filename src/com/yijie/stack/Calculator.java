@@ -19,7 +19,7 @@ public class Calculator {
         String keepNum = "";
         // while loop to scan the expression
         while (true) {
-            ch = expression.substring(index, index+1).charAt(0);
+            ch = expression.substring(index, index + 1).charAt(0);
             //execute the corresponding response according to ch
             if (operStack.isOper(ch)) {
                 if (!operStack.isEmpty()) {
@@ -47,7 +47,7 @@ public class Calculator {
                 if (index == expression.length() - 1) {
                     numStack.push(Integer.parseInt(keepNum));
                 } else {
-                    if (operStack.isOper(expression.substring(index+1,index+2).charAt(0))) {
+                    if (operStack.isOper(expression.substring(index + 1, index + 2).charAt(0))) {
                         numStack.push(Integer.parseInt(keepNum));
                         //RESET keepNum!!!
                         keepNum = "";
