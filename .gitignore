@@ -26,5 +26,6 @@ replay_pid*
 # Default ignored files
 /shelf/
 /workspace.xml
-/out
-/.idea
+/out/
+/.idea/
+/DataStructure.iml
