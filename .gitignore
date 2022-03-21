@@ -23,9 +23,10 @@
 hs_err_pid*
 replay_pid*
 
-# Default ignored files
+# Customized ignored files
 /shelf/
 /workspace.xml
 /out/
 /.idea/
 /DataStructure.iml
+/ReadMeEng.md
