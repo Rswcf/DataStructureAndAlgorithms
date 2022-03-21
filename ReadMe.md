@@ -407,3 +407,15 @@ Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=
 #### 6.6.2 代码
 
 [选择排序](src/com/yijie/sort/SelectionSort.java)
+
+### 6.7 插入排序
+
+#### 6.7.1 基本介绍
+
+把n个待排序的元素看作一个有序表和一个无序表。开始时有序表值包含一个元素，无序表中包含有n-1个元素，排序过程中每次从无序表中取出一个元素，插入到有序表的相应位置。
+
+![InsertionSort](src/image/InsertionSort.gif "InsertionSort")
+
+#### 6.7.2 代码
+
+[选择排序](src/com/yijie/sort/InsertionSort.java)
