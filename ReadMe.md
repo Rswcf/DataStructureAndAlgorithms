@@ -403,6 +403,8 @@ Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=
 选择排序是一种简单的排序方法。它的基本思想是，第一次从`arr[0]-arr[n-1]`中选取最小值，与`arr[0]`交换。第二次从`arr[1]-arr[n-1]`选取最小值，与`arr[1]`交换。第三次...
 第i次从`arr[i-1]-arr[n-1]`选取最小值，与`arr[i-1]`交换...第n-1次从`arr[n-2]-arr[n-1]`中选取最小值，与`arr[n-2]`交换，总共通过n-1次，得到一个按排序码从小到大排列的有序序列。
 
+![Selection Sort](src/image/SelectionSort.gif "SelectionSort")
+
 #### 6.6.2 代码
 
 [选择排序](src/com/yijie/sort/SelectionSort.java)
@@ -435,10 +437,22 @@ Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=
 
 #### 6.9.1 基本介绍
 
-快速排序的基本思想是: 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据比另一部分的所有数据要小，再按这种方法对这两部分数据分别进行快速排序，
-整个排序过程可以递归进行，使整个数据变成有序序列。
+快速排序的基本思想是: 通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据比另一部分的所有数据要小，再按这种方法对这两部分数据分别进行快速排序， 整个排序过程可以递归进行，使整个数据变成有序序列。
 
+![QuickSort](src/image/QuickSort.gif "QuickSort")
 
 #### 6.9.2 代码
 
 [快速排序](src/com/yijie/sort/QuickSort.java)
+
+### 6.10 归并排序
+
+#### 6.10.1 基本介绍
+
+归并排序(Merge Sort)是利用**归并**思想实现的排序方法。该算法采用经典的**分治策略(divide and conquer)**，将问题**分**(divide)成小问题递归求解，在**治**(conquer)阶段则将分阶段得到的各答案修补在一起，分而治之。
+
+![MergeSort](src/image/MergeSort.png "MergeSort")
+
+#### 6.10.2 代码
+
+[归并排序](src/com/yijie/sort/MergeSort.java)
