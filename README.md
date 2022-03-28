@@ -1,71 +1,97 @@
-
 # [to Chinese Version](README_CN.md)
 
 # 1. Linear data structures and nonlinear data structures
 
+[Source: Techvidvan](https://techvidvan.com/tutorials/data-structure-in-java/)
+
+The term data structure refers to a data collection with well-defined operations and behavior or properties. A data
+structure is a unique way of **storing or organizing the data in computer memory** so that we can use it effectively.
+
+![Data Structure in Java](src/image/DataStructureJava.webp "Data Structure in Java")
+
 ## 1.1 Linear data structures
 
-1. 线性结构作为最常用的数据结构，其特点是**数据元素之间存在一对一**的线性关系。
-2. 线性结构有两种不同的存储结构，即**顺序存储结构**和**链式存储结构**。顺序存储的线性表称为**顺序表**，顺序表中的存储元素是连续的。 链式存储的线性表称为**链表**
-   ，链表中的存储元素不一定是连续的，元素节点中存放数据元素以及相邻元素的地址信息。
-3. There are four types of linear data structures: **Array**, **Queue**, **Linked List** and **Stack**
+1. Linear structures, as the most commonly used data structures, are characterized by a **one-to-one** linear
+   relationship between data elements.
+2. Linear structures have two different storage structures, namely **sequential storage structure** and **chain storage
+   structure**.
+3. A linear table with sequential storage is called a **sequence table**, its characteristic is that **the logically
+   adjacent data elements are also adjacent in physical order**.
+4. A linear table with chained storage is called a **linked list**, where the stored elements are not necessarily
+   physically adjacent and the element nodes hold the data elements and the address information of the adjacent
+   elements.
+5. There are four types of linear data structures: **array**, **queue**, **linked list** and **stack**
 
-## 1.2 非线性结构
+## 1.2 non-linear data structures
 
-非线性结构包括:**二维数组**，**多维数组**，**广义表**，**树结构**，**图结构**。
+The non-linear data structure **does not arrange the data in a sequential manner** as in linear data structures.
+Non-linear data structures are the multilevel data structure.
 
-# 2. 稀疏数组和队列
+Non-linear structures include: **two-dimensional array**, **multi-dimensional array**, **generalized list**, **tree**
+and **graph**.
 
-## 2.1 稀疏数组 (Sparse matrix/Sparse array)
+# 2. Sparse Array and Queue
 
-### 2.1.1 基本介绍
+## 2.1 Sparse Array
 
-当一个数组中大部分元素是0，或者为同一个值时，可以使用稀疏数组来保存该数组。
+### 2.1.1 Description of Sparse Array
 
-稀疏数组的处理方法:
+[Source: techopedia](https://www.techopedia.com/definition/9480/sparse-array#:~:text=A%20sparse%20array%20is%20an,array%20in%20digital%20data%20handling.)
 
-1. 记录数组有几行几列，有多少不同的值 。
-2. 把具有不同值的元素的行列及值记录在一个小规模的数组中，从而缩小程序规模。
+A sparse array is an array of data in which many elements have a value of zero. This is in contrast to a dense array,
+where most of the elements have non-zero values or are “full” of numbers. A sparse array may be treated differently than
+a dense array in digital data handling.。
 
-### 2.1.2 二维数组与稀疏数组的转化
+How to handle sparse arrays:
 
-#### 二维数组转稀疏数组的思路
+1. record the number of rows and columns of the array and the number of different values .
+2. Record the row and column of the elements with different values in a small array, thus reducing the size of the
+   program.
 
-1. 遍历原始的二位数组，得到有效数据的个数`sum` 。
-2. 根据`sum`就可以创建稀疏数组`SparseArr int[sum+1][3]` 。
-3. 将二维数组的有效数据存入到稀疏数组 。
+### 2.1.2 Conversion between two-dimensional array and sparse array
 
-#### 稀疏数组转二维数组的思路
+#### Approach two-dimensional array to sparse array
 
-1. 读取第一行，根据第一行数据创建原始二维数组 。
-2. 继续读取稀疏数组后几行数据，并赋值给原始的二维数组 。
+1. Iterate through the original 2-dimensional array to get the number of non-zero data `sum` .
+2. Create the sparse array `SparseArr int[sum+1][3]` based on `sum` .
+3. Store the non-zero data of the two-dimensional array into the sparse array .
 
-### 2.1.3 代码
+#### Approach sparse array to 2-dimensional array
 
-[二维数组与稀疏数组相互转化](src/com/yijie/sparsearray/SparseArray.java)
+1. Create the original 2-dimensional array based on the first row of sparse array.
+2. Continue to read the next rows of the sparse array and recover the original 2D array.
+
+### 2.1.3 Code
+
+[Conversion between two-dimensional array and sparse array](src/com/yijie/sparsearray/SparseArray.java)
 
 ## 2.2 Queue
 
 ### 2.2.1 Description of Queue
 
-Queue is a linear data structure that stores items in the **FIFO** principal, which means that the data element that is inserted first will be removed first.
+[Source: Techvidvan](https://techvidvan.com/tutorials/data-structure-in-java/)
 
-队列是个有序列表，可以用**数组**或者**链表**来实现，队列遵循**FIFO**原则，即先入先出，后入后出
+Logically, a queue is a **FIFO (First In First Out)** data structure and we can physically implement it **either as an
+array or a linked list**. Whatever way we use to implement a queue, **insertions always take place at the “rear” end and
+deletions always from the “front” end of the queue**.
 
-### 2.2.2 数组模拟队列
+### 2.2.2 Queues based on Arrays
 
-1. 若使用数组的结构来存储队列数据，则队列数组的声明如下图，其中`maxSize`是该队列的最大容量 。
-2. 因为队列的输出，输入分别从前后端来处理，因此需要两个变量`front`及`rear`分别记录前后端的下标，`front`会随着数据输出改变，而`rear`则随着数据输入而改变
-3. 将数据存入队列称为`addQueue`,`addQueue`的处理需要两个步骤:
+1. In queues which are based on arrays , the `maxSize` is the maximum capacity of the queue .
+2. Since the output and input of the queue are handled from the front and back respectively, two variables `front`
+   and `rear` are needed to record the index of the front and back respectively,
+   `front` will change with the data output and `rear` will change with the data input.
+3. The process to put data into a queue is called `addQueue`, and the processing of `addQueue` requires two steps:
 
-- 将尾指针后移，`rear+1`,当`front=rear`,空
-- 若尾指针`rear`小于队列最大下标`maxSize-1`，则将数据存入`rear`所指的数据元素中，否则无法存入数据。`rear == maxSize-1`，队列满。
+- Move the rear pointer backwards, `rear+1`; when `front=rear`, the queue is empty
+- If the rear pointer `rear` is smaller than the maximum index of the queue `maxSize-1`, deposit the data in the
+  position pointed by `rear`, otherwise it cannot be deposited. If `rear == maxSize-1`, the queue is full.
 
 ![Example of queue](src/image/Queue.png "Queue")
 
-4. 代码
+4. Code
 
-[数组模拟队列](src/com/yijie/queue/ArrayQueueDemo.java)
+[Queues based on Arrays](src/com/yijie/queue/ArrayQueueDemo.java)
 
 ### 2.2.3 数组模拟环形队列
 
@@ -605,3 +631,97 @@ elements in constant O(1) time.
 ## 8.2 Code
 
 [Hash Table](src/com/yijie/hashtable/HashTableDemo.java)
+
+# 9. Tree
+
+## 9.1 Binary tree
+
+[Source: Wikipedia](https://en.wikipedia.org/wiki/Binary_tree)
+
+In computer science, a binary tree is a tree data structure in which each node has at most two children, which are
+referred to as the left child and the right child.
+
+### 9.1.1 Analysis of array storage
+
+- Pro: fast accessing of elements by index. For sorted arrays, binary search can be used to increase the speed.
+- contra: inefficient when inserting values, the whole array needs to be moved
+
+### 9.1.2 Analysis of linked list storage
+
+- Pro: optimize the array storage to some extent. efficient insertion and deletion compared to array storage
+- contra: inefficient when searching values, which needs a traversal from the head node
+
+### 9.1.3 Analysis of tree storage
+
+Improve the efficiency of data storage and reading, such as binary trees, which can ensure the speed of data retrieval,
+but also ensure the speed of data insertion, deletion and modification.
+
+## 9.2 Components and Terminologies
+
+[Source: Educative](https://www.educative.io/courses/data-structures-coding-interviews-java/qVMzgL0nZAk)
+
+- **Nodes**: Hold data
+- **Root**: The uppermost node of a tree
+- **Parent Node**: A node which is connected to one or more nodes on the lower level (Child Nodes).
+- **Child Node**: A node which is linked to an upper node (Parent Node)
+- **Sibling Node**: Nodes that have the same Parent Node
+- **Leaf Node**: A node that doesn’t have any Child Node
+- **Sub-tree**: A subtree is a portion of a tree that can be viewed as a complete tree on its own. Any node in a tree,
+  together with all the connected nodes below it, comprise a subtree of the original tree.
+- **Degree**: The degree of a node refers to the total number of sub-trees of a node
+- **Depth**: The number of connections (edges) from the root to a node is known as the depth of that node.
+- **Level**: (Depth Of Node) + 1
+
+## 9.3 Pre-Order, In-Order and Post-Order Traversal in Binary Trees
+
+1. Create the binary tree
+2. **Pre-Order Traversal**
+   1. Visit the current node and display its data.
+   2. Traverse the left sub-tree of currentNode, recursively using the PreOrder() function.
+   3. Traverse the right sub-tree of currentNode, recursively using the PreOrder() function.
+3. **In-Order Traversal**
+   1. Traverse the left sub-tree of currentNode, recursively using the InOrder() function.
+   2. Visit the current node and read.
+   3. Traverse the right sub-tree of currentNode, recursively using the In-Order() function.
+4. **Post-Order Traversal**
+   1. Traverse the left sub-tree of currentNode, recursively using PostOrder() function.
+   2. Traverse the right sub-tree of currentNode, recursively using PostOrder() function.
+   3. Visit current node and print its value.
+
+## 9.4 Pre-Order, In-Order and Post-Order Search in Binary Trees
+
+1. **Pre-Order Search**
+   1. determine whether the value of the current node is equal to the value to be found, **if equal, return**, if not:
+   2. if the left child node is not empty, recursive pre-order search, **if found, return**, if not:
+   3. if the right child node is not empty, recursive pre-order search
+2. **In-Order Search**
+   1. if the left child node is not empty, recursive in-order search, **if found, return**, if not:
+   2. determine whether the value of the current node is equal to the value to be found, **if equal, return**, if not:
+   3. if the right child node is not empty, recursive in-order search
+3. **Post-Order Search**
+   1. if the left child node is not empty, recursive in-order search, **if found, return**, if not:
+   2. if the right child node is not empty, recursive in-order search, **if found, return**, if not:
+   3. determine whether the value of the current node is equal to the value to be found, **if equal, return**, if not
+      return `null`
+
+## 9.5 Deletion
+
+### 9.5.1 Requirements
+
+1. if the node to be deleted is a leaf node, just delete the node
+2. if the node to be deleted is a non-leaf node, delete the whole sub-tree
+
+### 9.5.1 Approach
+
+Consider: If the tree is empty, there is only a `root` node and set it to be null
+
+1. Since the binary tree is unidirectional, we should **determine whether the children of the current node need to be
+   deleted**, rather than determining whether the current node is a node to be deleted.
+2. If the left child of the current node is not empty and is the node to be deleted, `this.left = null`, return
+3. if the right child of the current node are not empty and is the node is to be deleted, `this.right = null`, return
+4. If no nodes have been deleted during the second and the third step, then recursive deletion to the left subtree
+5. If the fourth step does not delete the node, recursive deletion to the right subtree
+
+## 9.6 Code
+
+[Binary tree](src/com/yijie/tree/BinaryTreeDemo.java)
