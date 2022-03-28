@@ -78,7 +78,7 @@ deletions always from the “front” end of the queue**.
 ### 2.2.2 Queues based on Arrays
 
 1. In queues which are based on arrays , the `maxSize` is the maximum capacity of the queue .
-2. Since the output and input of the queue are handled from the front and back respectively, two variables `front`
+2. Since the output and input of the queue are handled from the front and back respectively, two pointers `front`
    and `rear` are needed to record the index of the front and back respectively,
    `front` will change with the data output and `rear` will change with the data input.
 3. The process to put data into a queue is called `addQueue`, and the processing of `addQueue` requires two steps:
@@ -89,70 +89,82 @@ deletions always from the “front” end of the queue**.
 
 ![Example of queue](src/image/Queue.png "Queue")
 
-4. Code
+### 2.2.3 Code
 
 [Queues based on Arrays](src/com/yijie/queue/ArrayQueueDemo.java)
 
-### 2.2.3 数组模拟环形队列
+### 2.2.4 Circular Queues based on Arrays
 
-- 目前的数组只可使用一次，没有达到复用的效果
-- 将这个数组使用算法，改进成一个**环形的队列**，取模: %
+[Source: programiz](https://www.programiz.com/dsa/circular-queue)
 
-#### 使用数组模拟环形序列的思路
+A circular queue is the extended version of a regular queue where the last element is connected to the first element.
+Thus forming a circle-like structure.
 
-1. 对`front`变量的含义做调整:`front`指向队列的第一个元素，也就是说`arr[front]`就是队列的第一个元素，`front`初始值为0。
-2. 对`rear`变量的含义做调整:`rear`指向队列最后一个元素的后一个位置，空出空间作为约定，`rear`初始值为0 。
-3. 当队列满时，条件为:`(rear+1)%maxSize=front`
-4. 当队列为空的条件:`rear = front`
-5. 队列中有效数据的个数`(rear+maxSize-front)%maxSize`
+- The circular queue solves the major limitation of the normal queue. In a normal queue, after a bit of insertion and
+  deletion, there will be non-usable empty space.
+- the circular increment is performed by **modulo division** with the queue size.
 
-#### 代码
+#### Approach
 
-[数组模拟环形队列](src/com/yijie/queue/CircleArrayQueueDemo.java)
+1. Adjust the meaning of the `front` pointer: `front` tracks the first element of the queue, that is, `arr[front]` is
+   the first element of the queue, and the initial value of `front` is 0.
+2. Adjust the meaning of the `rear` pointer: `rear` tracks the next position of the last element in the queue, and the
+   initial value of `rear` is 0.
+3. The queue is full when `(rear + 1) % maxSize = front`
+4. The queue is empty when `rear = front`
+5. the number of valid data in the queue `(rear + maxSize - front) % maxSize`
 
-# 3. 链表
+### 2.2.5 Code
 
-## 3.1 单链表
+[Circular Queues based on Arrays](src/com/yijie/queue/CircleArrayQueueDemo.java)
 
-### 3.1.1 基本介绍
+# 3. Linked List
 
-链表是有序的列表，在内存中存储方式如下:  
+## 3.1 Singly Linked list
+
+### 3.1.1 Description of Singly Linked list
+
+[Source: Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
+
+In computer science, a linked list is a linear collection of data elements **whose order is not given by their physical
+placement in memory**. Instead, each element points to the next.
+
 ![Example of SingleLinkedList](src/image/SingleLinkedList.png "SingleLinkedList")
 
-1. 链表是以节点的方式来存储，是链式存储
-2. 每个节点包含data域，next域: 指向下一个节点
-3. 链表的各个节点不一定是连续存储
-4. 链表分带头节点的链表和不带头节点的链表
+1. Linked list is a data structure consisting of a collection of nodes
+2. Each node contains **data** and **next** (a reference to the next node in the sequence)
+3. The nodes of a linked list are not necessarily stored consecutively
+4. there is a linked list **with a head node** and a linked list **without a head node**
 
-### 3.1.2 单链表的创建
+### 3.1.2 Creation of a singly linked list
 
-1. 先创建一个`head`头节点，作用为表示链表的头
-2. 依次添加后续节点到链表最后遍历
+1. Create a `head` node as teh head of the linked list
+2. Add the subsequent nodes in sequence to the list
 
-### 3.1.3 添加元素到链表指定位置
+### 3.1.3 Insertion of an element to the singly linked list
 
-1. 通过**遍历**以及**辅助变量**`temp`找到新添加节点的位置
-2. `新节点.next = temp.next`
-3. `temp.next = 新节点`
+1. Find the position of the element to be inserted through **traversal** and **auxiliary variable `temp`**.
+2. `newNode.next = temp.next`
+3. `temp.next = newNode`
 
-### 3.1.4 修改链表中节点
+### 3.1.4 Modification of an element in the singly linked lsit
 
-1. 通过遍历找到该节点
-2. 修改节点信息
+1. Find the node by traversal
+2. Modify the node information
 
-### 3.1.5 从单链表中删除一个节点
+### 3.1.5 Deletion of an element from the singly linked list
 
-1. 找到需要删除的节点的前一个节点`temp`
+1. Find the previous node `temp` of the node to be deleted
 2. `temp.next = temp.next.next`
-3. 被删除的节点，将不会有其他引用指向，会被垃圾回收机制回收
+3. The deleted node isn't referenced any more and will be recycled by the garbage collection mechanism
 
-### 3.1.6 代码
+### 3.1.6 Code
 
-[单链表](src/com/yijie/linkedlist/SingleLinkedListDemo.java)
+[Singly Linked list](src/com/yijie/linkedlist/SingleLinkedListDemo.java)
 
-## 3.2双向链表
+## 3.2 Doubly Linked List
 
-### 3.2.1 基本介绍
+### 3.2.1 Description of Doubly Linked List
 
 单链表缺点分析:
 

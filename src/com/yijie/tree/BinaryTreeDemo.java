@@ -57,6 +57,13 @@ public class BinaryTreeDemo {
         } else {
             System.out.println("the hero is not found!" );
         }
+
+        //deletion
+        System.out.println("before deletion:");
+        binaryTree.preOrder();
+        binaryTree.delNode(5);
+        System.out.println("after deletion:");
+        binaryTree.preOrder();
     }
 }
 
@@ -66,6 +73,19 @@ class BinaryTree {
 
     public void setRoot(HeroNode root) {
         this.root = root;
+    }
+
+    //delete the node
+    public void delNode(int no){
+        if (this.root != null){
+            if (this.root.getNo() == no){
+                root = null;
+            } else {
+                root.delNode(no);
+            }
+        } else {
+            System.out.println("The tree is empty and can not be deleted!");
+        }
     }
 
     //pre-oder traversal
@@ -173,6 +193,37 @@ class HeroNode {
                 "no=" + no +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    //DELETION
+    //1. if the node to be deleted is a leaf node, just delete the node
+    //2. if the node to be deleted is a non-leaf node, delete the whole sub-tree
+
+    public void delNode(int no){
+        /**
+         * Consider: If the tree is empty, there is only a `root` node and set it to be null
+         *
+         * 1. Since the binary tree is unidirectional, we should **determine whether the children of the current node need to be
+         *    deleted**, rather than determining whether the current node is a node to be deleted.
+         * 2. If the left child of the current node is not empty and is the node to be deleted, `this.left = null`, return
+         * 3. if the right child of the current node are not empty and is the node is to be deleted, `this.right = null`, return
+         * 4. If no nodes have been deleted during the second and the third step, then recursive deletion to the left subtree
+         * 5. If the fourth step does not delete the node, recursive deletion to the right subtree
+         */
+        if (this.left != null && this.left.no == no){
+            this.left = null;
+            return;
+        }
+        if (this.right != null && this.right.no == no){
+            this.right = null;
+            return;
+        }
+        if (this.left != null){
+            this.left.delNode(no);
+        }
+        if (this.right != null){
+            this.right.delNode(no);
+        }
     }
 
     //Pre-Order Traversal in Binary Search Trees
@@ -289,5 +340,4 @@ class HeroNode {
 
         return resNode;
     }
-
 }
