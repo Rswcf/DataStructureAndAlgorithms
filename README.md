@@ -1,4 +1,116 @@
-# [to Chinese Version](README_CN.md)
+**[chinese version](README_CN.md)**
+
+---
+
+- [1. Linear data structures and nonlinear data structures](#1-linear-data-structures-and-nonlinear-data-structures)
+   * [1.1 Linear data structures](#11-linear-data-structures)
+   * [1.2 non-linear data structures](#12-non-linear-data-structures)
+- [2. Sparse Array and Queue](#2-sparse-array-and-queue)
+   * [2.1 Sparse Array](#21-sparse-array)
+      + [2.1.1 Description of Sparse Array](#211-description-of-sparse-array)
+      + [2.1.2 Conversion between two-dimensional array and sparse array](#212-conversion-between-two-dimensional-array-and-sparse-array)
+         - [Approach two-dimensional array to sparse array](#approach-two-dimensional-array-to-sparse-array)
+         - [Approach sparse array to 2-dimensional array](#approach-sparse-array-to-2-dimensional-array)
+      + [2.1.3 Code](#213-code)
+   * [2.2 Queue](#22-queue)
+      + [2.2.1 Description of Queue](#221-description-of-queue)
+      + [2.2.2 Queues based on Arrays](#222-queues-based-on-arrays)
+      + [2.2.3 Code](#223-code)
+      + [2.2.4 Circular Queues based on Arrays](#224-circular-queues-based-on-arrays)
+         - [Approach](#approach)
+      + [2.2.5 Code](#225-code)
+- [3. Linked List](#3-linked-list)
+   * [3.1 Singly Linked list](#31-singly-linked-list)
+      + [3.1.1 Description of Singly Linked list](#311-description-of-singly-linked-list)
+      + [3.1.2 Creation of a singly linked list](#312-creation-of-a-singly-linked-list)
+      + [3.1.3 Insertion of an element to the singly linked list](#313-insertion-of-an-element-to-the-singly-linked-list)
+      + [3.1.4 Modification of an element in the singly linked lsit](#314-modification-of-an-element-in-the-singly-linked-lsit)
+      + [3.1.5 Deletion of an element from the singly linked list](#315-deletion-of-an-element-from-the-singly-linked-list)
+      + [3.1.6 Code](#316-code)
+   * [3.2 Doubly Linked List](#32-doubly-linked-list)
+      + [3.2.1 Description of Doubly Linked List](#321-description-of-doubly-linked-list)
+      + [3.2.2 CRUD of doubly linked list](#322-crud-of-doubly-linked-list)
+      + [3.2.3 Code](#323-code)
+   * [3.3 Circular singly linked list](#33-circular-singly-linked-list)
+      + [3.3.1 Application of circular singly linked list: Josephus Problem](#331-application-of-circular-singly-linked-list--josephus-problem)
+      + [3.3.2 Creation and Operation of circular singly linked list](#332-creation-and-operation-of-circular-singly-linked-list)
+      + [3.3.3 Code](#333-code)
+- [4. Stack](#4-stack)
+   * [4.1 Description of Stack](#41-description-of-stack)
+   * [4.2 Application of stack](#42-application-of-stack)
+   * [4.3 Stack based on Array](#43-stack-based-on-array)
+   * [4.4 Stack based Calculator](#44-stack-based-calculator)
+   * [4.5 Prefix, Infix and Postfix Expressions](#45-prefix--infix-and-postfix-expressions)
+      + [4.5.1 Prefix Expression](#451-prefix-expression)
+      + [4.5.2. Infix Expression](#452-infix-expression)
+      + [4.5.3. Postfix Expression](#453-postfix-expression)
+      + [4.5.4. Postfix Expression Calculator:](#454-postfix-expression-calculator-)
+      + [4.5.5. Conversion of Infix Expression to Postfix Expression](#455-conversion-of-infix-expression-to-postfix-expression)
+- [5. Recursion](#5-recursion)
+   * [5.1 Description of Recursion](#51-description-of-recursion)
+   * [5.2 Recursion Mechanism](#52-recursion-mechanism)
+   * [5.3 Recursion: Maze](#53-recursion--maze)
+   * [5.4 Recursion: Eight Queens Problem（Backtracking）](#54-recursion--eight-queens-problem-backtracking-)
+      + [5.4.1 Description of eight queens problem](#541-description-of-eight-queens-problem)
+      + [5.4.2 Eight queens problem analysis](#542-eight-queens-problem-analysis)
+      + [5.4.3 Code](#543-code)
+- [6. Sorting Algorithms](#6-sorting-algorithms)
+   * [6.1 Description of Sorting Algorithms](#61-description-of-sorting-algorithms)
+   * [6.2 Classification of Sorting Algorithms:](#62-classification-of-sorting-algorithms-)
+   * [6.3 Time Complexity](#63-time-complexity)
+      + [6.3.1 Time Complexity T(n)](#631-time-complexity-t-n-)
+         - [Examples:](#examples-)
+      + [6.3.2  Big-O notation](#632--big-o-notation)
+      + [6.3.3 average case and worst case scenarios](#633-average-case-and-worst-case-scenarios)
+      + [6.3.4 Space complexity](#634-space-complexity)
+   * [6.4 Bubble Sort](#64-bubble-sort)
+      + [6.4.1 Description of Bubble Sort](#641-description-of-bubble-sort)
+      + [6.4.2 Code](#642-code)
+   * [6.5 Selection Sort](#65-selection-sort)
+      + [6.5.1 Description of Selection Sort](#651-description-of-selection-sort)
+      + [6.5.2 Code](#652-code)
+   * [6.6 Insertion Sort](#66-insertion-sort)
+      + [6.6.1 Description of Insertion Sort](#661-description-of-insertion-sort)
+      + [6.6.2 Code](#662-code)
+   * [6.7 Shell Sort](#67-shell-sort)
+      + [6.7.1 Description of Shell Sort](#671-description-of-shell-sort)
+      + [6.7.2 Code](#672-code)
+   * [6.8 Quick Sort](#68-quick-sort)
+      + [6.8.1 Description of Quick Sort](#681-description-of-quick-sort)
+      + [6.8.2 Code](#682-code)
+   * [6.9 Merge Sort](#69-merge-sort)
+      + [6.9.1 Description of Quick Sort](#691-description-of-quick-sort)
+      + [6.9.2 Code](#692-code)
+   * [6.10 Radix Sort](#610-radix-sort)
+      + [6.10.1 Description of Radix Sort](#6101-description-of-radix-sort)
+      + [6.10.2 Code](#6102-code)
+   * [6.11 Time Complexities Cheat Sheet](#611-time-complexities-cheat-sheet)
+- [7. Searching Algorithms](#7-searching-algorithms)
+   * [7.1 linear Search](#71-linear-search)
+      + [7.1.1 Description of linear Search](#711-description-of-linear-search)
+      + [7.1.2 Code](#712-code)
+   * [7.2 Binary Search](#72-binary-search)
+      + [7.2.1 Description of Binary Search](#721-description-of-binary-search)
+      + [7.2.2 Code](#722-code)
+- [8. Hash Table](#8-hash-table)
+   * [8.1 Description of Hash Table](#81-description-of-hash-table)
+      + [8.1.1 Hashing](#811-hashing)
+      + [8.1.2 Hash Table](#812-hash-table)
+   * [8.2 Code](#82-code)
+- [9. Tree](#9-tree)
+   * [9.1 Binary tree](#91-binary-tree)
+      + [9.1.1 Analysis of array storage](#911-analysis-of-array-storage)
+      + [9.1.2 Analysis of linked list storage](#912-analysis-of-linked-list-storage)
+      + [9.1.3 Analysis of tree storage](#913-analysis-of-tree-storage)
+   * [9.2 Components and Terminologies](#92-components-and-terminologies)
+   * [9.3 Pre-Order, In-Order and Post-Order Traversal in Binary Trees](#93-pre-order--in-order-and-post-order-traversal-in-binary-trees)
+   * [9.4 Pre-Order, In-Order and Post-Order Search in Binary Trees](#94-pre-order--in-order-and-post-order-search-in-binary-trees)
+   * [9.5 Deletion](#95-deletion)
+      + [9.5.1 Requirements](#951-requirements)
+      + [9.5.1 Approach](#951-approach)
+   * [9.6 Code](#96-code)
+
+---
 
 # 1. Linear data structures and nonlinear data structures
 
@@ -166,146 +278,174 @@ placement in memory**. Instead, each element points to the next.
 
 ### 3.2.1 Description of Doubly Linked List
 
-单链表缺点分析:
+Pros of Doubly Linked List:
 
-1. 单链表只能从一个方向进行查找，双向链表可以前向或者后向进行查找
-2. 单项链表不能自我删除，需要依靠辅助节点，双向可以**自我删除**
+1. Singly linked list can only be searched in one direction, doubly linked lists can be searched either forward or backward
+2. Elements are deleted from single-linked list relying on **auxiliary pointer**, elements in doubly linked list can be **self-deleted**
 
-### 3.2.2 双向链表的创建及增删改查操作
+### 3.2.2 CRUD of doubly linked list
 
-1. 遍历方法与单链表一直，区别:可以前向，也可后向查找
-2. **添加**:默认添加到双向链表最后
-1. 找到双向链表的最后节点
-2. `temp.next = newHeroNode`
-3. `newHeroNode.pre = temp`
-3. **修改**的思路及原理与单向链表一致
-4. **删除**:
-    1. 双向链表可实现自我删除
-2. 直接定位到待删除节点`temp`
-3. `temp.pre.next = temp.next`
-4. `temp.next.pre = temp.pre`
+1. Traversal is the same as with singly linked list, difference: **bidirectional**
+2. **Add**: Add to the end of the list by default
+   1. move to the last node of the doubly linked list
+   2. `temp.next = newHeroNode`
+   3. `newHeroNode.pre = temp`
+3. **Modify**: same as in singly linked list
+4. **Deletion**:
+    1. doubly linked lists can be self-deleted
+    2. locate the node `temp` which should be deleted
+    3. `temp.pre.next = temp.next`
+    4. `temp.next.pre = temp.pre`
 
-### 3.2.3 代码
+### 3.2.3 Code
 
-[双向链表](src/com/yijie/linkedlist/DoubleLinkedListDemo.java)
+[Doubly Linked List](src/com/yijie/linkedlist/DoubleLinkedListDemo.java)
 
-## 3.3 单向环形链表
+## 3.3 Circular singly linked list
 
-### 3.3.1 单向环形链表的应用: Josephus Problem
+### 3.3.1 Application of circular singly linked list: Josephus Problem
 
-Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=n)的人从1开始报数，数到m的人出列，m的下一位继续从0开始报数。依次类推，直到所有人出列为止，由此产生一个出列编号的序列。
+[Source: Wikipedia](https://en.wikipedia.org/wiki/Josephus_problem)
+
+In computer science and mathematics, the Josephus problem (or Josephus permutation) is a theoretical problem related to
+a certain counting-out game.
+
+People are standing in a circle waiting to be executed. Counting begins at a specified point in the circle and proceeds
+around the circle in a specified direction. After a specified number of people are skipped, the next person is executed.
+The procedure is repeated with the remaining people, starting with the next person, going in the same direction and
+skipping the same number of people, until only one person remains, and is freed.
 
 ![Josephus Problem](src/image/JosephusProblem.png "Josephus Problem")
 
-*示例:
+**Example**:
 
-* n=5,共有5人
-* k=1,从第一人开始报数
-* m=2,数两次
-* 出队列顺序:
+* n=5, 5 people sitting in a circle
+* k=1, counting begins from the first person
+* m=2, the person who calls 2 is out
+* counting-out sequence:
     * 2=>4=>1=>5=>3
 
-### 3.3.2 单向环形链表的创建及操作
+### 3.3.2 Creation and Operation of circular singly linked list
 
-1. **创建**一个单向环形链表
-1. 创建第一个节点，让first指针指向该节点，并形成环形
-2. 之后每创建一个新节点，就把该节点加入到已有的环形链表即可
-2. **遍历**单向环形链表
-1. 先让一个辅助指针指向first节点
-2. 后通过一个while循环遍历该链表即可(`cur.next first`)
+1. **Creation** of a circular singly linked list
+   1. Create the first node, let the first pointer point to this node, and form a ring
+   2. For each new node created, add the node to the existing ring
+2. **Traversal**of circular singly linked list
+   1. Let the auxiliary pointer track the first node
+   2. Traversal with the helf of the while loop (`cur.next == first`)
 
-### 3.3.3 代码
+### 3.3.3 Code
 
-[单向环形链表及Josephu Problem](src/com/yijie/linkedlist/JosephuProblem.java)
+[Circular Singly Linked List and Josephus Problem](src/com/yijie/linkedlist/JosephuProblem.java)
 
-# 4. 栈
+# 4. Stack
 
-## 4.1 基本介绍 
+## 4.1 Description of Stack
 
-1. 栈是一个先入先出的有序列表
-2. 栈是限制线性表中元素的插入与删除**只能在线性表同一端**进行的一种特殊线性表。允许插入与删除的一段，为变化的一端，称为**栈顶**(Top),另一端为固定的一端，称为**栈底**(Bottom)。
-3. 由栈的特性可知，最先放入栈的元素在栈底，最后放入栈的元素在栈顶。而删除元素恰好相反，最后放入的元素最先删除，最先放入的元素最后删除。
+1. Stack is a abstract data type which takes the last in first out (LIFO) ordering
+2. A stack restricts the insertion and deletion of elements ** to the same end**. 
+The side that allows insertion and deletion is called the **Top**, and the fixed side is called the **Bottom**.
+3. The entire functionality of a stack depends on the **push** and **pop** methods.
 
 ![Stack](src/image/Stack.webp "Stack")
 
-## 4.2 栈的应用场景
+## 4.2 Application of stack
 
-1. 子程序的调用:在跳往子程序前，会将下个指令的地址存到堆栈中，直到子程序执行完后再将地址取出，以回到原来程序。
-2. 处理递归调用:与子程序的调用类似，除了存储下一个指令的地址外，也将参数，区域变量等数据存入堆栈中。
-3. 表达式的转换[中缀表达式转后缀表达式]与求职
-4. 二叉树的遍历
-5. 图形的深度优先(depth-first)搜索法
+1. Processing Function Calls
+2. To backtrack to the previous task/state, e.g., in a **recursive code**
+3. Expression Evaluation Algorithm: Calculators employing reverse Polish notation use a stack structure to hold values.
+4. Traversal of the binary trees
+5. Depth First Search
 
-## 4.3 数组模拟栈
+## 4.3 Stack based on Array
 
-1. 定义一个`top`来表示栈顶，初始化为-1
-2. 入栈的操作，当有数据加入到栈时，`top++`;`stack[top] = data`
-3. 出栈的操作，`int value = stack[top];top--; return value`
-4. [代码](src/com/yijie/stack/ArrayStack.java)
+1. Define a `top` to represent the top of the stack, initialized to -1
+2. Push: `top++`;`stack[top] = data`
+3. Pop: `int value = stack[top]`; `top--`; `return value`
+4. [Code](src/com/yijie/stack/ArrayStack.java)
 
-## 4.4 栈实现综合计算器
+## 4.4 Stack based Calculator
 
-1. 通过一个`index`值遍历表达式
-2. 如果是一个**数字**，就直接入数栈
-3. 如果是一个**符号**，分如下情况处理:
-    1. 如果当前的符号栈为空，就直接入栈
-2. 如果符号符号栈有操作符，就进行比较，**如当前的操作符的优先级小于或者等于栈中的操作符**，就需要从数栈中pop出两个数，从符号栈中pop出一个符号，进行运算。将得到的结果入数栈，后将当前的符号入符号栈。**  
-   如果当前操作符的优先级大于栈中的操作符**，就直接入符号栈。
-4. 当表达式扫描完毕，就顺序的从数栈和符号栈中pop出相应的数和符号,并运行。
-5. 最后在数栈只有一个数字，就是表达式的结果。
-6. 代码: [以栈为底的计算器](src/com/yijie/stack/Calculator.java)
+1. Traverse the expression using an auxiliary pointer `index`
+2. If **number**, push to number stack
+3. If **operator**:
+   - if the operator stack is empty, push the operator to the stack
+   - if the operator stack is not empty, compared the new operator with the operator at the top of the operator stack.
+     **If the priority of the current operator is less than or equal to the operator in the stack**, pop two numbers from
+     the number stack and one operator from the operator stack and calculate. push the obtained result into the number
+     stack and the current operator is into the operator stack afterwards. **If the priority of the current operator is greater than the operator in the stack**, it is directly pushed into the
+     operator stack.
+4. When the expression is scanned, the corresponding number and operator are popped from the number stack and the operator stack in sequence, and run.
+5. The number left in the number stack at last is the final result
+6. Code: [Stack based Calculator](src/com/yijie/stack/Calculator.java)
 
-## 4.5 栈的前缀，中缀以及后缀表达式（逆波兰表达式）
+## 4.5 Prefix, Infix and Postfix Expressions
 
-### 4.5.1 前缀表达式
+### 4.5.1 Prefix Expression
 
-* 前缀表达式又称波兰表达式，前缀表达式的运算符位于操作数之前
-* 示例: (3+4)\*5-6对应的前缀表达式为-*+3456
-* 前缀表达式的计算机求值: **从右到左扫描表达式**，遇到数字式时，将数字压入堆栈，遇到运算符时，弹出栈顶两个数，用运算符对他们作相应的运算(栈顶元素和次顶元素)
-  ，将结果入栈。重复上述过程直到到大表达式最左端，最后运算出的值即为表达式的结果。
+* In this notation, operator is prefixed to operands, i.e. **operator is written ahead of operands**.
+* Prefix notation is also known as **Polish Notation**.
+* Example: `(3 + 4) \ * 5 - 6` => `- * + 3 4 5 6`
+* **Evaluation of Prefix Expression**:
 
-### 4.5.2. 中缀表达式
+[Source: geeksforgeeks](https://www.geeksforgeeks.org/evaluation-prefix-expressions/)
 
-* 中缀表达式就是最常见的表达式，如(3+4)*5-6
-* 人类习惯于中缀表达式，但其不利于计算机操作。因此在计算机运行时会将中缀表达式转换成其他表达式来操作。 一般为后缀表达式。
+  1. Put a pointer P at the end of the expression
+  2. If character at P is an operand push it to Stack
+  3. If the character at P is an operator pop two
+    elements from the Stack. Operate on these elements
+    according to the operator, and push the result
+    back to the Stack
+  4. Decrement P by 1 and go to Step 2 as long as there
+    are characters left to be scanned in the expression.
+  5. The Result is stored at the top of the Stack,
+    return it
+  6. End
 
-### 4.5.3. 后缀表达式
 
-* 后缀表达式又称逆波兰表达式，与前缀表达式相似,但运算符位于操作数之后
-* 示例: (3+4)\*5-6对应的后缀表达式为: 34+5\*6-
-* 后缀表达式的计算机求值: **从左到右**扫描表达式，遇到数字时，将数字压入堆栈，遇到运算符时，弹出栈顶两个数，用运算符对他们左相应的计算(次顶元素和栈顶元素)
-  ，并将结果入栈;重复上述过程直至表达式最右端，最后运算得出的值即为表达式的结果。
+### 4.5.2. Infix Expression
 
-* 示例:
+* Operators are written in-between their operands. This is the usual way we write expressions.like: `(3 + 4 ) * 5 - 6`
 
-|   正常表达式    |  逆波兰表达式  |   
-|:----------:|:--------:|  
-|    a+b     |   ab+    |  
-|  a+(b-c)   |  abc-+   |  
-| a+(b-c)*d  | abc-d*+  |  
-| a+d*(b-c)  | adbc-*+  |  
-|   a=1+3    |  a13+=   |
+### 4.5.3. Postfix Expression
 
-### 4.5.4. 逆波兰计算器:
+* Operators are written after their operands, also called Reverse Polish Notation
+* Example: `(3 + 4 ) \ * 5 - 6` => `3 4 + 5 \ * 6 -`
+* **Evaluation of Postfix Expression**:
 
-代码: [逆波兰计算器](src/com/yijie/stack/ReversePolishNotation.java)
+  just like the evaluation of prefix expression , but the order of evaluation of operators is always **left-to-right**
 
-### 4.5.5. 中缀表达式转后缀表达式
+* Example:
 
-    1. 初始化两个栈，运算符栈`s1`以及存储中间结果的栈`s2`
-    2. 从左到右扫描中缀表达式
-    3. 遇到操作数时，将其压入`s2`
-    4. 遇到运算符时，比较其与`s1`栈顶运算符的优先级
-        1. 如果`s1`为空，或栈顶运算符为左括号"("，则直接将此运算符入栈;
-        2. 若优先级比栈顶运算符高，也将运算符压入`s1`
-        3. 若优先级不高于栈顶运算符，将`s1`栈顶运算符弹出并压入`s2`中，重复上述比较
-    5. 遇到括号时:
-        1. 如果左括号"("，则直接压入`s1`
-        2. 如果是右括号")"，则依次弹出`s1`栈顶运算符，并压入`s2`，直到遇到左括号为止，丢弃括号
-    6. 重复步骤2-5，直到表达式最右端。
-    7. 将`s1`剩余运算符依次弹出并压入`s2`
-    8. 依次弹出`s2`中元素并输出，结果的逆序为重缀表达式的后缀表达式
-    9. 代码: [中缀表达式转后缀表达式](src/com/yijie/stack/ReversePolishNotation.java)
+|   infix   | postfix |   
+|:---------:|:-------:|  
+|    a+b    |   ab+   |  
+|  a+(b-c)  |  abc-+  |  
+| a+(b-c)*d | abc-d*+ |  
+| a+d*(b-c) | adbc-*+ |  
+|   a=1+3   |  a13+=  |
+
+### 4.5.4. Postfix Expression Calculator:
+
+Code: [Postfix Expression Calculator](src/com/yijie/stack/ReversePolishNotation.java)
+
+### 4.5.5. Conversion of Infix Expression to Postfix Expression
+
+ 1. initialize two stacks, the operator stack `s1` and the stack `s2` that stores intermediate results
+ 2. scan the index expression from left to right
+ 3. push the operand into `s2` when it is encountered
+ 4. When an operator is encountered, compare its priority level with the top-of-stack operator `s1`
+     1. If `s1` is empty, or the top-of-stack operator is a left bracket "(", then the operator is directly pushed to the stack;
+     2. if the priority is higher than the stack top operator, push the operator into `s1` as well
+     3. if the priority is not higher than the top of stack operator, pop `s1` top of stack operator and push it into `s2`, repeat the above comparison
+ 5. When brackets are encountered:
+     1. if "(" push to `s1`
+     2. if ")", pop `s1` top-of-stack operator and push it into `s2` until a left bracket is encountered, then discard the brackets
+ 6. Repeat steps 2-5 until the rightmost end of the expression.
+ 7. pop the remaining operators of `s1` in turn and push into `s2`
+ 8. Pop out the elements of `s2` in sequence, the **inverse order of the result is the postfix expression**
+
+**Code**: [Conversion of Infix Expression to Postfix Expression](src/com/yijie/stack/ReversePolishNotation.java)
 
 # 5. Recursion
 
