@@ -362,7 +362,7 @@ The side that allows insertion and deletion is called the **Top**, and the fixed
 1. Define a `top` to represent the top of the stack, initialized to -1
 2. Push: `top++`;`stack[top] = data`
 3. Pop: `int value = stack[top]`; `top--`; `return value`
-4. [Code](src/com/yijie/stack/ArrayStack.java)
+4. [Code](src/com/yijie/stack/ArrayStackDemo.java)
 
 ## 4.4 Stack based Calculator
 
