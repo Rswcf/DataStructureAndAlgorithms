@@ -614,4 +614,103 @@ Josephu问题:编号为1,2,...,n的n个人围坐一圈，约定编号为k(1<=k<=
 
 [二叉树](src/com/yijie/tree/BinaryTreeDemo.java)
 
+# 10. 堆排序
+
+## 10.1 基本介绍
+
+1. 堆排序是利用堆这种数据结构而设计的一种排序算法。堆排序是一种选择排序，其最好，最坏，平均时间复杂度均为O(nlogn)，它是不稳定排序。
+2. 堆是完全二叉树且具有如下性质:
+   - 每个节点的值都大于等于其左右子节点的值，称为大顶堆。
+   - 每个节点的值都小于等于其左右子节点的值，称为小顶堆。
+
+## 10.2 堆排序的基本思路
+
+1. 将待排序序列构成一个大顶堆
+
+> [Source: geeksforgeeks](https://www.geeksforgeeks.org/building-heap-from-array/)
+> 
+> Array = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17}
+> 
+> Corresponding Complete Binary Tree is:
+>
+>                 1
+>            3         5
+>         /    \     /  \
+>        4      6   13  10
+>       / \    / \
+>      9   8  15 17
+>
+> The task to build a Max-Heap from above array.
+> 
+> Total Nodes = 11.
+> 
+> Total Nodes = 11.
+> 
+> Last Non-leaf node index = (11/2) - 1 = 4.
+> 
+> Therefore, last non-leaf node = 6.
+> 
+> To build the heap, heapify only the nodes:
+> 
+> [1, 3, 5, 4, 6] in reverse order.
+> 
+> Heapify 6: Swap 6 and 17.
+>
+>                 1
+>              /     \
+>            3         5
+>         /    \      /  \
+>        4      17   13  10
+>       / \    /  \
+>      9   8  15   6
+> 
+> Heapify 4: Swap 4 and 9.
+> 
+>                 1
+>              /     \
+>            3         5
+>         /    \      /  \
+>        9      17   13  10
+>       / \    /  \
+>      4   8  15   6
+> 
+> Heapify 5: Swap 13 and 5.
+> 
+>                 1
+>              /     \
+>            3         13
+>         /    \      /  \
+>        9      17   5   10
+>       / \    /  \
+>      4   8  15   6
+> 
+> Heapify 3: First Swap 3 and 17, again swap 3 and 15.
+> 
+>                 1
+>              /     \
+>            17         13
+>          /    \      /  \
+>         9      15   5   10
+>        / \    /  \
+>       4   8  3   6
+> 
+> Heapify 1: First Swap 1 and 17, again swap 1 and 15, finally swap 1 and 6.
+>
+>                 17
+>              /      \
+>            15         13
+>          /    \      /  \
+>         9      6    5   10
+>        / \    /  \
+>       4   8  3    1
+
+2. 此时整个序列的最大值为堆顶根节点
+3. 将其与末尾元素进行交换，此时末尾元素即为最大值
+4. 后将剩余n-1个元素重新构造堆，重复步骤三，得到n-1元素的最大值
+5. 重复执行步骤三四，得到有序序列
+
+## 10.3 代码
+
+[Heap Sort](src/com/yijie/tree/HeapSort.java)
+
 

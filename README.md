@@ -109,6 +109,13 @@
       + [9.5.1 Requirements](#951-requirements)
       + [9.5.1 Approach](#951-approach)
    * [9.6 Code](#96-code)
+- [10. Heap](#10-heap)
+    * [10.1 Description of Heap](#101-description-of-heap)
+        + [10.1.1 Heap](#1011-heap)
+        + [10.1.2 Array based Heap](#1012-array-based-heap)
+    * [10.2 Applications of Heap](#102-applications-of-heap)
+    * [10.3 Approach of Heap Sort](#103-approach-of-heap-sort)
+    * [10.4 Code](#104-code)
 
 ---
 
@@ -877,3 +884,135 @@ Consider: If the tree is empty, there is only a `root` node and set it to be nul
 ## 9.6 Code
 
 [Binary tree](src/com/yijie/tree/BinaryTreeDemo.java)
+
+# 10. Heap
+
+## 10.1 Description of Heap
+
+### 10.1.1 Heap
+
+[Source: Educative](https://www.educative.io/courses/data-structures-coding-interviews-java/g75kWBBLxPG)
+
+1. Heaps are advanced data structures **based on Binary Trees**, which is why they are commonly known as Binary Heaps.
+2. All the nodes are ordered according to the rules listed below:
+    - A Heap tree must be a **Complete Binary Tree**.
+    - The nodes must be ordered according to the **Heap Property**.
+
+> **Complete Binary Tree**:
+>
+> is a tree where **each node has a max. of two children and nodes at all levels are completely filled (except the leaf nodes)**.
+> But the nodes at the last level must be structured in such a way that **the left side is never empty.**
+
+> **Heap Property**:
+> * **Max Heap Property**: All the parent node keys must be greater than or equal to their child node keys. So the root node will always contain the largest element present in the Heap.
+> * **Min Heap Property**: All the parent node keys are less than or equal to their child node keys. So the root node will always contain the smallest element present in the Heap.
+
+### 10.1.2 Array based Heap
+
+1. Heaps can be implemented using Arrays. The contents of a heap with n nodes are stored in such a way that **all the
+   parent nodes occur in the first half of array (n/2)**, while the **leaves are present at the last n/2 positions**. So
+   the last parent will be at the n/2-th position.
+2. The node at the kth position will have its children placed as follows:
+    * **The Left child at 2k+1**
+    * **The Right child at 2k+2**
+
+![Max Heap](src/image/MaxHeap.png "Max Heap")
+
+[Source: Wikipedia](https://en.wikipedia.org/wiki/Heap_(data_structure))
+
+## 10.2 Applications of Heap
+
+The major uses of Heaps are:
+1. **Order statistics**: Heaps are primarily used for efficiently finding the smallest or largest element in an array.
+2. **Priority Queues**: Priority queues can be efficiently implemented using Binary Heap because it supports insert(), delete(), extractmax(), and decreaseKey() operations in O(logn) time.
+3. **Sorting**: HeapSort uses the Heap data structure to sort values in exactly the same way as in a Binary Tree.
+
+## 10.3 Approach of Heap Sort
+
+1. Build a max heap from the array to be sorted
+
+> [Source: geeksforgeeks](https://www.geeksforgeeks.org/building-heap-from-array/)
+>
+> Array = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17}
+>
+> Corresponding Complete Binary Tree is:
+>
+>                 1
+>            3         5
+>         /    \     /  \
+>        4      6   13  10
+>       / \    / \
+>      9   8  15 17
+>
+> The task to build a Max-Heap from above array.
+>
+> Total Nodes = 11.
+>
+> Total Nodes = 11.
+>
+> Last Non-leaf node index = (11/2) - 1 = 4.
+>
+> Therefore, last non-leaf node = 6.
+>
+> To build the heap, heapify only the nodes:
+>
+> [1, 3, 5, 4, 6] in reverse order.
+>
+> Heapify 6: Swap 6 and 17.
+>
+>                 1
+>              /     \
+>            3         5
+>         /    \      /  \
+>        4      17   13  10
+>       / \    /  \
+>      9   8  15   6
+>
+> Heapify 4: Swap 4 and 9.
+>
+>                 1
+>              /     \
+>            3         5
+>         /    \      /  \
+>        9      17   13  10
+>       / \    /  \
+>      4   8  15   6
+>
+> Heapify 5: Swap 13 and 5.
+>
+>                 1
+>              /     \
+>            3         13
+>         /    \      /  \
+>        9      17   5   10
+>       / \    /  \
+>      4   8  15   6
+>
+> Heapify 3: First Swap 3 and 17, again swap 3 and 15.
+>
+>                 1
+>              /     \
+>            17         13
+>          /    \      /  \
+>         9      15   5   10
+>        / \    /  \
+>       4   8  3   6
+>
+> Heapify 1: First Swap 1 and 17, again swap 1 and 15, finally swap 1 and 6.
+>
+>                 17
+>              /      \
+>            15         13
+>          /    \      /  \
+>         9      6    5   10
+>        / \    /  \
+>       4   8  3    1
+
+2. The max value now is the key at the root node
+3. Swap the node with the last element in the array
+4. Reconstruct the max heap from the n - 1 elements left, repeat step 3
+5. Repeat step 3 and step 4 until we get the sorted array
+
+## 10.4 Code
+
+[Heap Sort](src/com/yijie/tree/HeapSort.java)
