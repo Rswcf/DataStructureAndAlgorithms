@@ -251,13 +251,13 @@ placement in memory**. Instead, each element points to the next.
 ![Example of SingleLinkedList](src/image/SingleLinkedList.png "SingleLinkedList")
 
 1. Linked list is a data structure consisting of a collection of nodes
-2. Each node contains **data** and **next** (a reference to the next node in the sequence)
+2. Each node contains **data** and **next** (a reference filed to the next node in the sequence)
 3. The nodes of a linked list are not necessarily stored consecutively
 4. there is a linked list **with a head node** and a linked list **without a head node**
 
 ### 3.1.2 Creation of a singly linked list
 
-1. Create a `head` node as teh head of the linked list
+1. Create a `head` node as the head of the linked list
 2. Add the subsequent nodes in sequence to the list
 
 ### 3.1.3 Insertion of an element to the singly linked list
@@ -273,9 +273,14 @@ placement in memory**. Instead, each element points to the next.
 
 ### 3.1.5 Deletion of an element from the singly linked list
 
-1. Find the previous node `temp` of the node to be deleted
+1. Find **the previous node** `temp` of the node to be deleted
 2. `temp.next = temp.next.next`
 3. The deleted node isn't referenced any more and will be recycled by the garbage collection mechanism
+
+*The time complexity of deleting a node will be **O(N)**, because we have to traverse the linked list from the head node
+to find out the previous node `temp`.*
+
+*The space complexity is **O(1)** because we only need constant space to store our pointers.*
 
 ### 3.1.6 Code
 
@@ -287,12 +292,17 @@ placement in memory**. Instead, each element points to the next.
 
 Pros of Doubly Linked List:
 
-1. Singly linked list can only be searched in one direction, doubly linked lists can be searched either forward or backward
-2. Elements are deleted from single-linked list relying on **auxiliary pointer**, elements in doubly linked list can be **self-deleted**
+1. Singly linked list can only be traversed in one direction, doubly linked lists can be traversed either forwards or backwards
+2. Elements are deleted from single-linked list relying on an **auxiliary pointer**, elements in doubly linked list can be **self-deleted**.
+3. Comparison of Time Complexity between linked lists and Array
+
+![Comparison of Time Complexity](src/image/ComparisonOfTimeComplexityBetweenLinkedListsAndArray.png "Comparison of Time Complexity")
+
+[Source: LeetCode](https://leetcode.com/explore/learn/card/linked-list/213/conclusion/1230/)
 
 ### 3.2.2 CRUD of doubly linked list
 
-1. Traversal is the same as with singly linked list, difference: **bidirectional**
+1. Traversal is the same as for a singly linked list, difference: **bidirectional**
 2. **Add**: Add to the end of the list by default
    1. move to the last node of the doubly linked list
    2. `temp.next = newHeroNode`
@@ -748,7 +758,8 @@ element of the list until a match is found or the whole list has been searched.
 
 ### 7.2.1 Description of Binary Search
 
-the binary search approach:
+**Prerequisite: the elements in the Array are in *sorted order*.**
+The binary search approach:
 
 1. First determine the index of the middle value of the array: `mid = (left + right) / 2`
 2. compare the value to be found `findVal` with `arr[mid]`
