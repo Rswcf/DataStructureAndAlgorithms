@@ -1,12 +1,18 @@
-**[chinese version](README_CN.md)**
+**[*chinese version*](README_CN.md)**
 
 ---
 
+![commit activity](https://img.shields.io/github/commit-activity/m/Rswcf/DataStructureAndAlgorithms)
+![last commit](https://img.shields.io/github/last-commit/Rswcf/DataStructureAndAlgorithms)
+![java](https://badges.aleen42.com/src/java.svg)
+
+# Table of Contents
+
 - [1. Linear data structures and nonlinear data structures](#1-linear-data-structures-and-nonlinear-data-structures)
-   * [1.1 Linear data structures](#11-linear-data-structures)
-   * [1.2 non-linear data structures](#12-non-linear-data-structures)
+    * [1.1 Linear data structures](#11-linear-data-structures)
+    * [1.2 non-linear data structures](#12-non-linear-data-structures)
 - [2. Sparse Array and Queue](#2-sparse-array-and-queue)
-   * [2.1 Sparse Array](#21-sparse-array)
+    * [2.1 Sparse Array](#21-sparse-array)
       + [2.1.1 Description of Sparse Array](#211-description-of-sparse-array)
       + [2.1.2 Conversion between two-dimensional array and sparse array](#212-conversion-between-two-dimensional-array-and-sparse-array)
          - [Approach two-dimensional array to sparse array](#approach-two-dimensional-array-to-sparse-array)
